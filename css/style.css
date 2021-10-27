@@ -204,6 +204,10 @@ body{
     padding-bottom: 1rem;
 }
 
+.slider-mobile{
+    display: none;
+}
+
 .btn-center{
     margin: 0 45%;
 }
@@ -346,6 +350,10 @@ footer{
     font-size: 0.6rem;
 }
 
+.copy-mobile{
+    display: none;
+}
+
 @media (max-width: 450px){
     .container{
         width: 100%;
@@ -425,6 +433,12 @@ footer{
         text-align: center;
         margin-right: 1.2rem;
     }
+    .slider-mobile{
+        display: block;
+        text-align: center;
+        font-size: 5rem;
+        color: var(--second-color);
+    }
     .inform-desc{
         width: 100%;
     }
@@ -433,6 +447,7 @@ footer{
     }
     .whatwesay{
         flex-flow: column nowrap;
+        margin: 0px;
     }
     .card{
         width: 100%;
@@ -486,5 +501,13 @@ footer{
     }
     .copyright{
         display: none;
+    }
+    .copy-mobile{
+        display: block;
+        background-color: var(--primary-color);
+        text-align: center;
+        color: var(--terciary-color);
+        font-size: 0.8rem;
+        padding-bottom: 1rem;
     }
 }
