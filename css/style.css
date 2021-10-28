@@ -17,11 +17,12 @@
 
 body{
     font-family: 'Be Vietnam', sans-serif;
+    counter-reset: section;
 }
 
 .container{
-    width: 100%;
     margin: 0 auto;
+    width: 1440px;
 }
 
 .header{
@@ -33,7 +34,9 @@ body{
     justify-content: space-evenly;
     width: 100%;
 }
-
+.hamburguer-nav{
+    display: none;
+}
 .nav-items{
     display: inline;
     padding: 0.5rem 1rem;
@@ -43,6 +46,10 @@ body{
 .nav-items a{
     color: var(--primary-color);
     text-decoration: none;
+}
+
+.nav-items:hover{
+    border-bottom: 2px solid var(--second-color);
 }
 
 .btn-get{
@@ -130,29 +137,12 @@ body{
     color: var(--primary-color);
 }
 
-.first-text::before{
+.inform-desc h4::before{
     background-color: var(--second-color);
     border-radius: 2rem;
     color: var(--four-color);
-    content: "01";
-    margin-right: 2rem;
-    padding: 0.3rem 1rem;
-}
-
-.sec-text::before{
-    background-color: var(--second-color);
-    border-radius: 2rem;
-    color: var(--four-color);
-    content: "02";
-    margin-right: 2rem;
-    padding: 0.3rem 1rem;
-}
-
-.three-text::before{
-    background-color: var(--second-color);
-    border-radius: 2rem;
-    color: var(--four-color);
-    content: "03";
+    counter-increment: section;
+    content: "0" counter(section);
     margin-right: 2rem;
     padding: 0.3rem 1rem;
 }
@@ -344,23 +334,38 @@ footer{
     display: flex;
     justify-content: flex-end;
 }
-
-.copyright p{
-    color: var(--terciary-color);
-    font-size: 0.6rem;
-}
-
 .copy-mobile{
-    display: none;
+    background-color: none;
+    bottom: 3rem;
+    color: var(--terciary-color);
+    font-size: 0.8rem;
+    position: relative;
+    text-align: center;
+    left: 21rem;
+    width: 100%;
 }
 
-@media (max-width: 450px){
+@media (max-width: 375px){
     .container{
         width: 100%;
     }
     .header{
-        flex-flow: column nowrap;
+        flex-flow: row nowrap;
         height: 10rem;      
+        justify-content: space-between;
+        padding: 1.8rem;
+    }
+    .div-logo{
+        align-content: center;
+        display: flex;
+        justify-content: center;
+    }
+    .hamburguer-nav{
+        display: block;
+    }
+    .hamburguer-nav img{
+        cursor: pointer;
+        height: 1.5rem;
     }
     .div-nav{
         display: none;
@@ -370,13 +375,13 @@ footer{
     }
     .slider{
         flex-flow: column-reverse nowrap;
-        justify-content: center;
         height: 40rem;
+        justify-content: center;
         text-align: center;
     }
     .slider p{
-        text-align: center;
         padding: 1rem 1rem 2rem 1rem;
+        text-align: center;
     }
     .slider-img{
         height: 20rem;
@@ -388,17 +393,17 @@ footer{
         font-size: 2rem;
     }
     .inform{
+        align-items: center;
         flex-flow: column nowrap;
         justify-content: center;
-        align-items: center;
     }
     .inform-text{
-        width: 100%;
         text-align: center;
+        width: 100%;
     }
     .inform-text p{
-        text-align: center;
         padding: 1rem 1rem 2rem 1rem;
+        text-align: center;
     }
     .first-text{
         background-color: #f3613c85;
@@ -406,38 +411,22 @@ footer{
         border-bottom-left-radius: 2rem;
         margin-left: 1rem;
     }
-    .first-text::before{
+    .inform-desc h4::before{
         padding: 0rem 1rem 0rem 1rem;
         text-align: center;
         margin-right: 1.2rem;
     }
-    .sec-text{
+    .cl-title{
         background-color: #f3613c85;
         border-top-left-radius: 2rem;
         border-bottom-left-radius: 2rem;
         margin-left: 1rem;
-    }
-    .sec-text::before{
-        padding: 0rem 1rem 0rem 1rem;
-        text-align: center;
-        margin-right: 1.2rem;
-    }
-    .three-text{
-        background-color: #f3613c85;
-        border-top-left-radius: 2rem;
-        border-bottom-left-radius: 2rem;
-        margin-left: 1rem;
-    }
-    .three-text::before{
-        padding: 0rem 1rem 0rem 1rem;
-        text-align: center;
-        margin-right: 1.2rem;
     }
     .slider-mobile{
-        display: block;
-        text-align: center;
-        font-size: 5rem;
         color: var(--second-color);
+        display: block;
+        font-size: 5rem;
+        text-align: center;
     }
     .inform-desc{
         width: 100%;
@@ -464,9 +453,9 @@ footer{
         justify-content: space-evenly;
     }
     .susb-text{
-        width: 100%;
+        font-size: 1.5rem;
         text-align: center;
-        font-size: 1.8rem;
+        width: 100%;
     }
     .copy{
         flex-flow: column-reverse nowrap;
@@ -486,11 +475,14 @@ footer{
     .form-footer{
         width: 100%;
     }
+    .inp-form{
+        width: 13rem;
+    }
     .btn-form:hover{
-        outline: 2px solid var(--second-color);
-        outline-offset: 2px;
         cursor: pointer;
         padding: 0.4rem;
+        outline: 2px solid var(--second-color);
+        outline-offset: 2px;
     }
     a{
         text-decoration: none;
@@ -503,11 +495,12 @@ footer{
         display: none;
     }
     .copy-mobile{
-        display: block;
         background-color: var(--primary-color);
-        text-align: center;
         color: var(--terciary-color);
+        display: block;
         font-size: 0.8rem;
         padding-bottom: 1rem;
+        position: static;
+        text-align: center;
     }
 }
